@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>FriendFinder</title>
+	<title>Friend Finder Survey</title>
 
 	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -176,7 +176,7 @@
 	  	      </div>
 	  	      <div class="modal-body">
 	  	        <h2 id="matchName"></h2>
-	  	        <img id="matchImg" src="" alt="">
+	  	        <img id="matchImg" src="../images/mffAsset 1.png" alt="">
 	  	      </div>
 	  	      <div class="modal-footer">
 	  	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -236,11 +236,11 @@
   	    	var currentURL = window.location.origin;
 
   	    	// AJAX post the data to the friends API.
-  	    	$.post(currentURL + "../data/friends.js", userData, function(data){
+  	    	$.post(currentURL, userData, function(data){
 
   	    		// Grab the result from the AJAX post so that the best match's name and photo are displayed.
-  	    		$("#matchName").text(data.name);
-  	    		$('#matchImg').attr("src", data.image);
+  	    		$("#name").text(data.name);
+  	    		$('#image').attr("src", data.image);
 
   		    	// Show the modal with the best match
   		    	$("#resultsModal").modal('toggle');

@@ -16,15 +16,15 @@ module.exports = function(app){
 
 // -- API posts data from Friends.js
 
-  app.post('../data/friends.js', function(req, res){
+  app.post('/', function(req, res){
 
-    var match = {
+    var matchMe = {
           name: '',
           image: '',
-          matchMatch: 1000
+          matchMaker: 1000
         };
 
-        var userBodyEntry = req.body;
+        var userEntry = req.body;
         var userName = userData.name;
         var userImage = userData.image;
         var userScores = userData.scores;
@@ -42,15 +42,15 @@ module.exports = function(app){
       for (var j = 0; j < 10; j++){
         friendCompare += Math.abs(parseInt(userScores[j]) - parseInt(friends[i]-scores[j]));
 
-        if (friendCompare <= match.friendDifference){
-          match.name = friends[i].name;
-          match.image = friends[i].image;
-          match.matchMatch = friendCompare;
+        if (friendCompare <= matchMe.friendDifference){
+          matchMe.name = friends[i].name;
+          matchMe.image = friends[i].image;
+          matchMe.matchMatch = friendCompare;
         }
       }
     }
-          friends.push(userBodyEntry);
-          res.json(match);
+          friends.push(userEntry);
+          res.json(matchMaker);
 
 
       });
