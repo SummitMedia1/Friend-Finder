@@ -1,6 +1,6 @@
 //-- this JSON gets and posts friend data and then compares the data to other user responses.
 
-var friendFinder = require('../data/friends.js');
+var friends = require('../data/friends.js');
 var path = require('path');
 var express = require('express');
 var app = express();
@@ -9,14 +9,12 @@ var friendCompare = 0;
 //-- API gets data from Friends.js
 
 module.exports = function(app){
-  app.get('../data/friends.js', function(req, res){
+  app.get('/', function(req, res){
     res.json(friends);
 
 });
 
-// -- API posts data from Friends.js
-
-  app.post('/', function(req, res){
+  app.post('/..data/friends.js', function(req, res){
 
     var matchMe = {
           name: '',
@@ -24,7 +22,7 @@ module.exports = function(app){
           matchMaker: 1000
         };
 
-        var userEntry = req.body;
+        var userData = req.body;
         var userName = userData.name;
         var userImage = userData.image;
         var userScores = userData.scores;
@@ -42,15 +40,16 @@ module.exports = function(app){
       for (var j = 0; j < 10; j++){
         friendCompare += Math.abs(parseInt(userScores[j]) - parseInt(friends[i]-scores[j]));
 
-        if (friendCompare <= matchMe.friendDifference){
+        if (friendCompare <= matchMe.friendsDifference){
           matchMe.name = friends[i].name;
           matchMe.image = friends[i].image;
           matchMe.matchMatch = friendCompare;
         }
       }
     }
-          friends.push(userEntry);
-          res.json(matchMaker);
+          friends.push(userData);
+
+          res.json(matchMe);
 
 
       });

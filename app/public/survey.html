@@ -20,11 +20,11 @@
 <body>
   	<div class="container-fluid">
 			<div class="col-sm-offset-1 col-sm-2" id="mff-logo" align="center">
-				<img src="../images/mffAsset 1.png" width="80" />
+				<img src="../images/mffAsset-1.png" width="90" />
 			</div>
 
-			<div class="col-sm-9">
-				<h2>Survey Questions</h2>
+			<div class="col-sm-offset-1 col-sm-4">
+				<h2 style="text-align: center; text-transform: uppercase; font-weight: 800; letter-spacing: .04em; color: #29a8db">Survey Questions</h2>
 			</div>
 
 			<div class="row">
@@ -176,7 +176,7 @@
 	  	      </div>
 	  	      <div class="modal-body">
 	  	        <h2 id="matchName"></h2>
-	  	        <img id="matchImg" src="../images/mffAsset 1.png" alt="">
+	  	        <img id="matchImg" src="../images/mffAsset-1.png" alt="">
 	  	      </div>
 	  	      <div class="modal-footer">
 	  	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -196,7 +196,7 @@
         '.chosen-select-deselect'  : {allow_single_deselect:true},
         '.chosen-select-no-single' : {disable_search_threshold:10},
         '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-        '.chosen-select-width'     : {width:"95%"}
+        '.chosen-select-width'     : {width:"100%"}
       }
       for (var selector in config) {
         $(selector).chosen(config[selector]);
@@ -238,6 +238,7 @@
   	    	// AJAX post the data to the friends API.
   	    	$.post(currentURL, userData, function(data){
 
+
   	    		// Grab the result from the AJAX post so that the best match's name and photo are displayed.
   	    		$("#name").text(data.name);
   	    		$('#image').attr("src", data.image);
@@ -254,7 +255,6 @@
 
       	return false;
       });
-
 
     </script>
 

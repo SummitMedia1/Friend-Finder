@@ -12,6 +12,8 @@ var PORT = 3000;
 //-- establishes bodyParser will parse all data entry
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
 
 app.use(express.static('app'));
 //-- establishes the routes data will take - all files talk to eachother.

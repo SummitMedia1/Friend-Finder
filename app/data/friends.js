@@ -2,8 +2,8 @@
 
 var friends = [
 {
-  "name":"Eli",
-  "photo":"",
+  "name":"Casey",
+  "photo":"../images/1.jpg",
   "scores":[
       5,
       1,
@@ -20,7 +20,7 @@ var friends = [
 
 {
   "name":"Tessa",
-  "photo":"",
+  "photo":"../images/2.jpg",
   "scores":[
       5,
       1,
