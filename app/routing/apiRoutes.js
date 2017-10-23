@@ -9,12 +9,12 @@ var friendCompare = 0;
 //-- API gets data from Friends.js
 
 module.exports = function(app){
-  app.get('/', function(req, res){
+  app.get('../data/friends.js', function(req, res){
     res.json(friends);
 
 });
 
-  app.post('/..data/friends.js', function(req, res){
+  app.post('/', function(req, res){
 
     var matchMe = {
           name: '',
