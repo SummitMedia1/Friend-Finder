@@ -9,7 +9,7 @@ var friendCompare = 0;
 //-- API gets data from Friends.js
 
 module.exports = function(app){
-  app.get('../data/friends.js', function(req, res){
+  app.get('/api/friends', function(req, res){
     res.json(friends);
 
 });
