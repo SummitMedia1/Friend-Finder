@@ -1,1 +1,1 @@
-web: node --debug=5858 './app/public/index.html'
+web: node --debug=5858 './app/public/home.html'
