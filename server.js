@@ -22,6 +22,6 @@ require('./app/routing/htmlRoutes.js')(app);
 
 //-- Listening statement
 
-app.listen(PORT, function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log("The app is listening on port "+ PORT);
 });
