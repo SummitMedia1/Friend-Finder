@@ -14,7 +14,7 @@ module.exports = function(app){
 
 });
 
-  app.post('/api/friends', function(req, res){
+  app.post('/', function(req, res){
 
     var matchMe = {
           name: '',
@@ -41,7 +41,7 @@ module.exports = function(app){
         // friendCompare += Math.abs(parseInt(userScores[j]) - parseInt(friends[i].scores[i]));
 
 
-friendCompare += Math.abs(friends[i].scores[j] - userData[j]);
+friendCompare += Math.abs(parseInt(friends[i].scores[j]) - (parseInt(userData[j])));
         if (friendCompare <= matchMe.friendsDifference){
           matchMe.name = friends[i].name;
           matchMe.image = friends[i].image;
