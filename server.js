@@ -13,7 +13,7 @@ var PORT = process.env.PORT || 3000;
 //-- establishes bodyParser will parse all data entry
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(bodyParser.text());
+// app.use(bodyParser.text());
 
 //-- establishes the routes data will take - all files talk to eachother.
 
@@ -22,6 +22,6 @@ require('./app/routing/htmlRoutes.js')(app);
 
 //-- Listening statement
 
-app.listen(process.env.PORT || 3000, function(){
-  console.log("The app is listening on port "+ PORT);
+app.listen(PORT, function(){
+  console.log("The app is listening on port " + PORT);
 });
