@@ -14,7 +14,7 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(bodyParser.text());
-
+app.use(express.static(__dirname + '/app/public'));
 //-- establishes the routes data will take - all files talk to eachother.
 
 require('./app/routing/apiRoutes.js')(app);

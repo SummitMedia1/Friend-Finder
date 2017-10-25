@@ -32,6 +32,7 @@
 			</div>
 				<hr />
 			<div class="col-sm-offset-2 col-sm-8">
+
 				<h2><strong>About You</strong></h2>
 	  		<h4>Name (Required)</h4>
 	  		<input type="text" name="" id="name" class="form-control" required >
@@ -176,7 +177,7 @@
 	  	      </div>
 	  	      <div class="modal-body">
 	  	        <h2 id="matchName"></h2>
-	  	        <img src="/..images/mffAsset-1.png" id="matchImg"  alt="">
+	  	        <img src="../images/mffAsset-1.png" id="matchImg"  alt="">
 	  	      </div>
 	  	      <div class="modal-footer">
 	  	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -192,9 +193,6 @@
     	// Chosen CSS
       var config = {
         '.chosen-select'           : {},
-        '.chosen-select-deselect'  : {allow_single_deselect:true},
-        '.chosen-select-no-single' : {disable_search_threshold:10},
-        '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
         '.chosen-select-width'     : {width:"100%"}
       }
       for (var selector in config) {
@@ -219,10 +217,12 @@
   		if (validateForm() == true)
   		{
   			// Create an object for the user's data
-  	    	var userData = {
-  	    		name: $("#name").val(),
-  	    		image: $("#image").val(),
-  	    		scores: [
+  	    	var userData = 
+					{
+  	    		name: $("#name").val().trim(),
+  	    		image: $("#image").val().trim(),
+  	    		scores:
+						[
 							$("#q1").val(),
 							$("#q2").val(),
 							$("#q3").val(),
@@ -235,12 +235,13 @@
 							$("#q10").val()
 						]
   	    	}
+
   	    	// Grab the URL of the website
   	    	var currentURL = window.location.origin;
   	    	// AJAX post the data to the friends API.
-  	    	$.post(currentURL, userData, function(data){
+  	    	$.post('/api/friends', userData).done(function(data){
   	    		// Grab the result from the AJAX post so that the best match's name and photo are displayed.
-  	    		$("#matchName").text(data.name);
+  	    		$("#matchName").html(data.name);
   	    		$('#matchImg').attr("src", data.image);
   		    	// Show the modal with the best match
   		    	$("#resultsModal").modal('show');

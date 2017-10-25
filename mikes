@@ -1,0 +1,57 @@
+
+//a POST routes /api/friends - this handles incoming survey results. will also used to handle the compatibility logic
+//Load Data
+var friends = require('../data/friends.js');
+var bodyParser = require("body-parser");
+
+module.exports = function(app){
+  //a GET route that displays JSON of all possible friends
+  app.get('/api/friends', function(req,res){
+    res.json(friends);
+  });
+  // var urlencodedParser = bodyParser.urlencoded({extended:false});
+  app.post('/api/friends', function(req,res){
+    console.log(req.body);
+
+    //grabs the new friend's scores to compare with friends in friendList array
+    var userInput = req.body;
+    console.log('userInput = ' + JSON.stringify(userInput));
+    //
+    var userResponses = userInput.scores;
+    console.log('userResponses = ' + userResponses);
+    console.log(newFriend);
+    var scoresArray = [];
+    var bestMatch = 0;
+
+    // //runs through all current friends in list
+    for(var i = 0; i < friends.length; i++){
+      var scoresDiff = 0;
+    //   //run through scores to compare friends
+      for(var j = 0; j < 10; j++){
+        scoresDiff += (Math.abs(parseInt(friends[i].scores[j]) - parseInt(newFriend[j])));
+      }
+      console.log(friends[i]);
+      console.log(scoresDiff);
+
+    // //
+      // push results into scoresArray
+      scoresArray.push(scoresDiff);
+
+
+    // // //after all friends are compared, find best match
+    for (var i = 0; i < scoresArray.length; i++){
+      if (scoresArray[i] <= scoresArray[bestMatch]){
+        bestMatch = i;
+      }
+    }
+
+    // //
+    // // //return bestMatch data
+    var matchedMade = friends[bestMatch];
+    res.json(matchedMade);
+    // //
+    //pushes new submission into the friendsList array
+    friends.push(req.body);
+
+});
+};

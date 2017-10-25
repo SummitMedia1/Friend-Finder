@@ -9,13 +9,12 @@ module.exports = function(app){
 
 	//survey page
 	app.get('/survey', function(req, res) {
-	  res.sendFile(path.join(__dirname, '/../public/survey.html'));
+	  res.sendFile(path.join(__dirname, '../public/html/survey.html'));
 	});
 
 	//home page
-	app.use('/',function(req, res) {
-	  res.sendFile(path.join(__dirname, '/../public/home.html'));
+	app.get('/',function(req, res) {
+	  res.sendFile(path.join(__dirname, '../public/html/home.html'));
 	});
-
 
 };
